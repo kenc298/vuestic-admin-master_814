@@ -72,7 +72,7 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "bulma": "^0.9.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-node": "^11.1.0",
@@ -96,7 +96,7 @@
     "npm": ">= 3.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "eslint"
   },
   "license": "MIT",
   "lint-staged": {
