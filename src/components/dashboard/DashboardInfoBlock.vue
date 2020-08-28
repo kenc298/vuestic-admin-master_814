@@ -14,7 +14,7 @@
         <div
           class="flex xs2 sm2 md2 xl2 justify-content-center"
         >
-          <va-card class="flex xs12 sm12 md12 lg12 xl12" :color="this.$themes.warning">
+          <va-card class="flex xs12 sm12 md12 lg12 xl12" :color="this.$themes.primary">
             <p class="display-1 justify-content-center" style="color: white;">{{ vital[0].temp }}</p>
             <p>{{"Temperature"}}</p>
           </va-card>
@@ -109,39 +109,42 @@ export default {
     return {
       infoTiles: [{
         color: 'danger',
+        // hiiiiiiiiiiiiiiiiiii
         // eslint-disable-next-line no-undef
         value: '',
         text: 'Pulse',
-        icon: '',
+        icon: ''
       },
       {
         color: 'warning',
         value: '30',
         text: 'Humidity',
-        icon: '',
+        icon: ''
       },
       {
         color: 'success',
         value: '30',
         text: 'Heat Level',
-        icon: '',
+        icon: ''
       },
       {
         color: 'info',
         value: '30',
         text: 'Env Level',
-        icon: '',
+        icon: ''
       },
       {
         color: 'primary',
         value: '70%',
         text: 'Battery Level',
-        icon: '',
+        icon: ''
       }],
       vital: [],
-      step:[],
-      non_step:{ totalsteps: 'N/A',
-        totalcalory: 'N/A'},
+      step: [],
+      non_step: {
+        totalsteps: 'N/A',
+        totalcalory: 'N/A'
+      },
       item: {
         envLvl: 'N/A',
         heatExp: 'N/A',
@@ -151,25 +154,25 @@ export default {
         totalsteps: 'N/A',
         totalcalory: 'N/A',
         distance: 'N/A',
-        elevation: 'N/A',
+        elevation: 'N/A'
       },
-      
+
       modal: false,
       currImage: 0,
-      warning_text: 'You have been sitting for too long',
+      warning_text: 'You have been sitting for too long'
     }
   },
   components: {
-    Verif_code,
+    Verif_code
   },
   mounted () {
     this.axios.post('http://192.168.10.52:5000/api/getvital', {
       user_id: '742b62cdef85',
       starttime: '2020-02-1',
-      endtime: '2020-03-20',
+      endtime: '2020-03-20'
     })
       .then(response => {
-        //console.log(response.data)
+        // console.log(response.data)
         if (!response.status) {
           console.log('fail to connect')
           this.vital.push(this.item)
@@ -179,31 +182,29 @@ export default {
             console.log(this.vital)
           } else {
             this.vital.push(this.item)
-            //console.log(this.vital)
+            // console.log(this.vital)
           }
         }
       })
       .catch((error) => {
         this.vital.push(this.item)
         console.log(error)
-        //console.log(this.vital)
+        // console.log(this.vital)
       })
 
-
-
-      this.axios.post('http://192.168.10.52:5000/api/getstep', {
+    this.axios.post('http://192.168.10.52:5000/api/getstep', {
       user_id: 'e47fb2f7b8ba',
-      time: '2020-01-32',
+      time: '2020-01-32'
     })
       .then(response => {
-        //console.log(response.data)
+        // console.log(response.data)
         if (!response.status) {
           console.log('fail to connect')
           this.step = this.non_step
         } else {
           if (response.data[5] !== 0) {
             console.log(response.data)
-            
+
             this.step = response.data[3]
             console.log(this.step)
           } else {
@@ -215,12 +216,11 @@ export default {
       .catch((error) => {
         this.step = this.non_step
         console.log(error)
-        //console.log(this.vital)
+        // console.log(this.vital)
       })
-      
   },
-  computed:{// Vuex 组件之间传值
-    user_phone: state => store.state.user_phone, // 获取Input_phone组件的传输值
+  computed: { // Vuex 组件之间传值
+    user_phone: state => store.state.user_phone // 获取Input_phone组件的传输值
     // user_verif:state=>store.state.user_verif,// 获取输入的验证码组件的传输值
     // verif_code:state=>store.state.verif_code, // 获取发送的验证码组件的传输值
   },
@@ -233,8 +233,8 @@ export default {
     },
     showNextImage () {
       this.currImage = this.currImage === this.images.length - 1 ? 0 : this.currImage + 1
-    },
-  },
+    }
+  }
 }
 </script>
 
