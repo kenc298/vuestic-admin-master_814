@@ -108,7 +108,7 @@ export default {
   data () {
     return {
       infoTiles: [{
-        color: 'primary',
+        color: 'success',
         // hiiiiiiiiiiiiiiiiiii
         // eslint-disable-next-line no-undef
         value: '',
