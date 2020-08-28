@@ -96,7 +96,7 @@
     "npm": ">= 3.0.0"
   },
   "gitHooks": {
-    "pre-commit": "lint-staged"
+    "pre-commit": "eslint"
   },
   "license": "MIT",
   "lint-staged": {
